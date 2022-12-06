@@ -1,0 +1,4 @@
+% build the in
+coil_index_mat = [1:1:30];
+coil_index_mat = reshape(coil_index_mat,[3,10]);
+
