@@ -7,8 +7,9 @@ custom_colormap = coil_colormap(30, coil_groupings);
 % build the indexing matrix - matches the diagram
 coil_index_mat = build_array(30, 3, 10);
 
-heatmap(coil_index_mat);
+heatmap(coil_index_mat,FontSize=12);
 colormap(custom_colormap)
+colorbar off
 title('default coil array')
 
 % example: shift 3 and flip vertical
@@ -16,6 +17,7 @@ shift = 3; vertical_flip = true; horizontal_flip = false;
 coil_index_mat = output_new_config(coil_index_mat, shift, vertical_flip, horizontal_flip);
 
 figure,
-heatmap(coil_index_mat);
+heatmap(coil_index_mat,FontSize=12);
 colormap(custom_colormap);
+colorbar off
 title('shifted coil array')
