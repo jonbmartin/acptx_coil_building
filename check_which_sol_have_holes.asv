@@ -1,0 +1,13 @@
+D = '/home/jonathan/PycharmProjects/minibatch_shimming/acptx/acptx_coil_building/test/';
+
+S = dir(fullfile(D,'*'));
+N = setdiff({S([S.isdir]).name},{'.','..'}); % list of subfolders of D.
+
+
+for ii = 3:numel(S) % 3 to skip '.' and '..'
+    file = strcat(D,S(ii).name);
+    disp(file)
+    load(file);
+
+    
+end

@@ -1,0 +1,26 @@
+D = '/home/jonathan/PycharmProjects/minibatch_shimming/acptx/acptx_coil_building/results_power/';
+figure
+S = dir(fullfile(D,'*'));
+N = setdiff({S([S.isdir]).name},{'.','..'}); % list of subfolders of D.
+
+min_err_sol = [];
+min_err = inf;
+max_err = 0;
+for ii = 3:numel(S) % 3 to skip '.' and '..'
+    file = strcat(D,S(ii).name);
+    load(file);
+    hold on, plot(results.sar_cost_v,results.rmse_cost_v)
+    hold on, scatter(results.sar_cost_v,results.rmse_cost_v)
+    min_total_config_err = min(results.sar_cost_v + results.rmse_cost_v);
+    if min_total_config_err < min_err
+        min_err = min_total_config_err;
+        disp(strcat('min solution = ', S(ii).name, '; min_err = ', num2str(min_err)))
+    end
+    if min_total_config_err < min_err
+        min_err = min_total_config_err;
+        disp(strcat('min solution = ', S(ii).name, '; min_err = ', num2str(min_err)))
+
+end
+
+xlabel('SAR cost')
+ylabel('Error cost')
